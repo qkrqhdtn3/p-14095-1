@@ -23,7 +23,7 @@ public class Question {
     private String subject;
 
     @Column(columnDefinition = "TEXT")
-    private String Content;
+    private String content;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
 //    @OneToMany(cascade = CascadeType.REMOVE)
