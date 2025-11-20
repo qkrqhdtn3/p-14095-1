@@ -1,13 +1,16 @@
 package com.mysite.sbb;
 
 import jakarta.persistence.*;
-import org.springframework.cglib.core.Local;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Getter
+@Setter
 @Entity
 public class Question {
     @Id

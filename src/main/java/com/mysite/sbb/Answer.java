@@ -1,11 +1,15 @@
 package com.mysite.sbb;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Getter
+@Setter
 @Entity
 public class Answer {
     @Id
