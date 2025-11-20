@@ -21,10 +21,6 @@ class PostRepositoryTests {
 	@Test
     @DisplayName("findAll")
 	void t1(){
-//        List<Question> all = questionRepository.findAll();
-//        assertEquals(2, all.size());
-//        Question q = all.get(0);
-//        assertEquals("sbb의 의미", q.getSubject());
         List<Question> questions = questionRepository.findAll();
         Question question = questions.get(0);
         assertThat(question.getSubject()).isEqualTo("sbb의 의미");
@@ -33,12 +29,6 @@ class PostRepositoryTests {
     @Test
     @DisplayName("findById")
     void t2(){
-//        Optional<Question> oq = this.questionRepository.findById(1);
-//
-//        if(oq.isPresent()){
-//            Question q = oq.get();
-//            assertEquals("sbb의 의미", q.getSubject());
-//        }
         Question question = questionRepository.findById(1).get();
         assertThat(question.getSubject()).isEqualTo("sbb의 의미");
     }
@@ -63,5 +53,18 @@ class PostRepositoryTests {
         List<Question> questions = questionRepository.findBySubjectLike("sbb%");
         Question question = questions.get(0);
         assertThat(question.getSubject()).isEqualTo("sbb의 의미");
+    }
+
+    @Test
+    @DisplayName("수정")
+    void t0(){
+        Question question = questionRepository.findById(1).get();
+        assertThat(question).isNotNull();
+
+        question.setSubject("수정된 제목");
+        questionRepository.save(question);
+
+        Question foundQuestion = questionRepository.findBySubject("수정된 제목").get();
+        assertThat(foundQuestion).isNotNull();
     }
 }
