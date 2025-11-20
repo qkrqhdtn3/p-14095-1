@@ -28,7 +28,7 @@ public class Question {
 
 //    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
 //    private List<Answer> answers;
-    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Answer> answers = new ArrayList<>();
 
     public Answer addAnswer(String content){

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-@Profile("test")
+//@Profile("test")
 @Configuration
 @RequiredArgsConstructor
 public class TestInitData {
@@ -41,6 +41,7 @@ public class TestInitData {
         q2.setSubject("점심 추천");
         q2.setContent("점심 메뉴를 추천해주세요");
         q2.setCreateDate(LocalDateTime.now());
+        q2.addAnswer("햄버거");
         questionRepository.save(q2);
     }
 }
