@@ -2,6 +2,7 @@ package com.mysite.sbb.question;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,28 +15,33 @@ public class QuestionController {
     private final QuestionRepository questionRepository;
 
     @GetMapping("/question/list")
-    @ResponseBody
-    public String list() {
-        List<Question> questions = questionRepository.findAll();
+//    @ResponseBody
+//    public String list() {
+    public String list(Model model) {
+        model.addAttribute("name", "paul");
+        model.addAttribute("ages", List.of(10, 20, 30, 40, 50));
 
-        String questionLi = questions
-                .stream()
-                .map(q -> "<li>%d / %s</li>".formatted(q.getId(), q.getSubject()))
-                .collect(Collectors.joining("\n"));
-
-        return """
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <title>질문 목록</title>
-                </head>
-                <body>
-                    <ul>
-                        %s
-                    </ul>
-                </body>
-                </html>
-                """.formatted(questionLi);
+        return "question_list";
+//        List<Question> questions = questionRepository.findAll();
+//
+//        String questionLi = questions
+//                .stream()
+//                .map(q -> "<li>%d / %s</li>".formatted(q.getId(), q.getSubject()))
+//                .collect(Collectors.joining("\n"));
+//
+//        return """
+//                <!DOCTYPE html>
+//                <html>
+//                <head>
+//                    <meta charset="UTF-8">
+//                    <title>질문 목록</title>
+//                </head>
+//                <body>
+//                    <ul>
+//                        %s
+//                    </ul>
+//                </body>
+//                </html>
+//                """.formatted(questionLi);
     }
 }
