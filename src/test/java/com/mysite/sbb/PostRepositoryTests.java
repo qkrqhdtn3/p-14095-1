@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ActiveProfiles("test")
 @SpringBootTest
+@Transactional
 class PostRepositoryTests {
     @Autowired
     private QuestionRepository questionRepository;
@@ -62,7 +63,6 @@ class PostRepositoryTests {
 
     @Test
     @DisplayName("수정")
-    @Transactional
     void t6() {
         Question question = questionRepository.findById(1).get();
         assertThat(question).isNotNull();
@@ -87,7 +87,6 @@ class PostRepositoryTests {
 
     @Test
     @DisplayName("답변 생성")
-    @Transactional
     void t8() {
         Question question = questionRepository.findById(2).get();
 
@@ -101,7 +100,6 @@ class PostRepositoryTests {
 
     @Test
     @DisplayName("답변 생성 by oneToMany")
-    @Transactional
     void t9() {
         Question question = questionRepository.findById(2).get();
 
